@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 "use strict";
-=======
->>>>>>> 16db6ea6e7a6c962a297341fb2547e862f56101a
 /* 
 var level = 0;
 
