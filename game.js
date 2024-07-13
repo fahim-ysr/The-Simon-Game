@@ -23,17 +23,15 @@ function nextSequence() {
     $(`.${randomChosenColor}`).removeClass("pressed");
   }, 100);
 
-  /* 
   var audio = new Audio(`sounds/${randomChosenColor}.mp3`);
   // console.log(audio);  //For checking if audio file is correct
   audio.play();
-  */
 }
 
 // Used for verification purposes
 nextSequence();
 
-// *Step 4: Checking Which Button is Pressed
+// *Step 4: Checking Which Button is Pressed and adding the corresponding audio
 
 // Creating the handler function to detect which colors are chosen
 $(".btn").on("click", function () {
@@ -41,4 +39,7 @@ $(".btn").on("click", function () {
   var userChosenColor = $(this).attr("id");
   userClickedPattern.push(userChosenColor);
   console.log(userClickedPattern);
+  var audio = new Audio(`sounds/${userChosenColor}.mp3`);
+  // console.log(audio); //For checking if audio file is correct
+  audio.play();
 });
