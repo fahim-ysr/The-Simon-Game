@@ -1,3 +1,4 @@
+"use strict";
 /* 
 var level = 0;
 
@@ -22,6 +23,22 @@ function nextSequence() {
   var randomNumber = Math.floor(Math.random() * 4);
   gamePattern.push(buttonColors[randomNumber]);
   console.log(gamePattern);
+
+  // *Step 3: Showing the sequence to user with animations and sounds
+  // Press the specific button (Keydown action)
+  $(`.${buttonColors[randomNumber]}`).addClass("pressed");
+
+  // Removes the press from the button after 100ms (Keyup action)
+  setTimeout(function () {
+    $(`.${buttonColors[randomNumber]}`).removeClass("pressed");
+  }, 100);
+
+  function play() {
+    var audio = new Audio(`sounds/${buttonColors[randomNumber]}.mp3`);
+    // console.log(audio);  //For checking if audio file is correct
+    audio.play();
+  }
+  play();
 }
 
 // Used for verification purposes
