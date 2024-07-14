@@ -23,9 +23,8 @@ function nextSequence() {
     $(`.${randomChosenColor}`).removeClass("pressed");
   }, 100);
 
-  var audio = new Audio(`sounds/${randomChosenColor}.mp3`);
-  // console.log(audio);  //For checking if audio file is correct
-  audio.play();
+  // !Step 5 Continued: Plays sound of the corresponding button
+  playSound(randomChosenColor);
 }
 
 // Used for verification purposes
@@ -39,7 +38,13 @@ $(".btn").on("click", function () {
   var userChosenColor = $(this).attr("id");
   userClickedPattern.push(userChosenColor);
   console.log(userClickedPattern);
-  var audio = new Audio(`sounds/${userChosenColor}.mp3`);
-  // console.log(audio); //For checking if audio file is correct
-  audio.play();
+
+  // !Step 5 Continued: Plays sound of buttons clicked
+  playSound(userChosenColor);
 });
+
+// *Step 5: Added sounds to button clicks
+function playSound(name) {
+  var audio = new Audio(`sounds/${name}.mp3`);
+  audio.play();
+}
