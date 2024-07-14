@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 
 const buttonColors = ["red", "green", "blue", "yellow"];
 var randomChosenColor;
@@ -41,10 +41,23 @@ $(".btn").on("click", function () {
 
   // !Step 5 Continued: Plays sound of buttons clicked
   playSound(userChosenColor);
+
+  // !Step 6 Continued: Shows button press animation
+  animatePress(userChosenColor);
 });
 
 // *Step 5: Added sounds to button clicks
 function playSound(name) {
   var audio = new Audio(`sounds/${name}.mp3`);
   audio.play();
+}
+
+// *Step 6: Added animations to user clicks
+function animatePress(currentColor) {
+  // Adds the press effect
+  $(`.${currentColor}`).addClass("pressed");
+  // Removes the press effect
+  setTimeout(function () {
+    $(`.${currentColor}`).removeClass("pressed");
+  }, 100);
 }
