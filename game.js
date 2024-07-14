@@ -5,10 +5,18 @@ var randomChosenColor;
 const gamePattern = [];
 const userClickedPattern = [];
 
+var started = false;
+var level = 0;
+
 // *Step 2: Create A New Pattern that chooses a random color from the array buttonColors
 
 // This selects a random color from array buttonColors and adds to the array gamePattern
 function nextSequence() {
+  // !Step 7 Continued: Increments the game level
+  level++;
+  // Updated the level text after it increments
+  $("#level-title").text(`Level ${level}`);
+
   var randomNumber = Math.floor(Math.random() * 4);
   var randomChosenColor = buttonColors[randomNumber];
   gamePattern.push(randomChosenColor);
@@ -27,8 +35,10 @@ function nextSequence() {
   playSound(randomChosenColor);
 }
 
+/*
 // Used for verification purposes
 nextSequence();
+*/
 
 // *Step 4: Checking Which Button is Pressed and adding the corresponding audio
 
@@ -61,3 +71,14 @@ function animatePress(currentColor) {
     $(`.${currentColor}`).removeClass("pressed");
   }, 100);
 }
+
+// *Step 7: Starting the game
+$(document).keypress(function (event) {
+  if (!started) {
+    if (event.key == "a" || event.key == "A") {
+      $("#level-title").text(`Level ${level}`);
+      nextSequence();
+      started = true;
+    }
+  }
+});
