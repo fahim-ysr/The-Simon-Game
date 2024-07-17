@@ -97,7 +97,7 @@ function checkAnswer(curretLevel) {
     if (userClickedPattern.toString() == gamePattern.toString()) {
       setTimeout(function () {
         nextSequence();
-        // Empties userClickedPattern array.
+        // Empties userClickedPattern array..
         userClickedPattern.length = 0;
       }, 1000);
     }
