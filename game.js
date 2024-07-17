@@ -104,5 +104,17 @@ function checkAnswer(curretLevel) {
   } else {
     // User did not click the right patterns as the game pattern.
     console.log("Fail!");
+    // *Step 9: Game Over
+
+    // Makes the screen red
+    $("body").addClass("game-over");
+    setTimeout(function () {
+      $("body").removeClass("game-over");
+    }, 200);
+
+    // Plays the wrong sound.
+    playSound("wrong");
+
+    $("#level-title").text("Game Over! Press Any Key To Restart...");
   }
 }
