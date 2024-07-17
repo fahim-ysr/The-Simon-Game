@@ -10,11 +10,11 @@ var level = 0;
 
 // *Step 2: Create A New Pattern that chooses a random color from the array buttonColors
 
-// This selects a random color from array buttonColors and adds to the array gamePattern
+// This selects a random color from array buttonColors and adds to the array gamePattern.
 function nextSequence() {
   // !Step 7 Continued: Increments the game level
   level++;
-  // Updates the level displayed after increment
+  // Updates the level displayed after increment.
   $("#level-title").text(`Level ${level}`);
 
   var randomNumber = Math.floor(Math.random() * 4);
@@ -45,9 +45,9 @@ nextSequence();
 
 // *Step 4: Checking Which Button is Pressed and adding the corresponding audio
 
-// Creating the handler function to detect which colors are chosen
+// Creating the handler function to detect which colors are chosen.
 $(".btn").on("click", function () {
-  // alert("Clicked!"); // Just to check if button clicks are detected
+  // alert("Clicked!"); // Just to check if button clicks are detected.
   var userChosenColor = $(this).attr("id");
   userClickedPattern.push(userChosenColor);
   console.log(userClickedPattern);
@@ -59,7 +59,7 @@ $(".btn").on("click", function () {
   animatePress(userChosenColor);
 
   // !Step 8 Continued: Checks answer
-  // Sends the last index of array as a parameter to checkAnswer for pattern validation
+  // Sends the last index of array as a parameter to checkAnswer for pattern validation.
   checkAnswer(userClickedPattern.length - 1);
 });
 
@@ -71,9 +71,9 @@ function playSound(name) {
 
 // *Step 6: Added animations to user clicks
 function animatePress(currentColor) {
-  // Adds the press effect
+  // Adds the press effect.
   $(`.${currentColor}`).addClass("pressed");
-  // Removes the press effect
+  // Removes the press effect.
   setTimeout(function () {
     $(`.${currentColor}`).removeClass("pressed");
   }, 100);
@@ -91,18 +91,18 @@ $(document).keypress(function () {
 // *Step 8: Checks the user's input sequence against the game's pattern sequence (Pattern Validation)
 function checkAnswer(curretLevel) {
   if (userClickedPattern[curretLevel] == gamePattern[curretLevel]) {
-    // User clicked the right buttons as the game pattern
+    // User clicked the right buttons as the game pattern.
     console.log("Success!");
-    // Checks if the user has the right pattern as the game pattern
+    // Checks if the user has the right pattern as the game pattern.
     if (userClickedPattern.toString() == gamePattern.toString()) {
       setTimeout(function () {
         nextSequence();
-        // Empties userClickedPattern array
+        // Empties userClickedPattern array.
         userClickedPattern.length = 0;
       }, 1000);
     }
   } else {
-    // User did not click the right patterns as the game pattern
+    // User did not click the right patterns as the game pattern.
     console.log("Fail!");
   }
 }
