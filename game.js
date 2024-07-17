@@ -8,7 +8,7 @@ const userClickedPattern = [];
 var started = false;
 var level = 0;
 
-// *Step 2: Create A New Pattern that chooses a random color from the array buttonColors
+// *Step 2: Creating a new pattern that chooses a random color from the array buttonColors
 
 // This selects a random color from array buttonColors and adds to the array gamePattern.
 function nextSequence() {
@@ -43,7 +43,7 @@ function nextSequence() {
 nextSequence();
 */
 
-// *Step 4: Checking Which Button is Pressed and adding the corresponding audio
+// *Step 4: Checking which button is pressed and adding the corresponding audio
 
 // Creating the handler function to detect which colors are chosen.
 $(".btn").on("click", function () {
@@ -63,13 +63,13 @@ $(".btn").on("click", function () {
   checkAnswer(userClickedPattern.length - 1);
 });
 
-// *Step 5: Added sounds to button clicks
+// *Step 5: Adding sounds to button clicks
 function playSound(name) {
   var audio = new Audio(`sounds/${name}.mp3`);
   audio.play();
 }
 
-// *Step 6: Added animations to user clicks
+// *Step 6: Adding animations to user clicks
 function animatePress(currentColor) {
   // Adds the press effect.
   $(`.${currentColor}`).addClass("pressed");
@@ -88,7 +88,7 @@ $(document).keypress(function () {
   }
 });
 
-// *Step 8: Checks the user's input sequence against the game's pattern sequence (Pattern Validation)
+// *Step 8: Checking the user's input sequence against the game's pattern sequence (Pattern Validation)
 function checkAnswer(curretLevel) {
   if (userClickedPattern[curretLevel] == gamePattern[curretLevel]) {
     // User clicked the right buttons as the game pattern.
@@ -104,7 +104,7 @@ function checkAnswer(curretLevel) {
   } else {
     // User did not click the right patterns as the game pattern.
     console.log("Fail!");
-    // *Step 9: Game Over
+    // *Step 9: Implementing th 'Game Over' effect
 
     // Makes the screen red
     $("body").addClass("game-over");
@@ -116,5 +116,18 @@ function checkAnswer(curretLevel) {
     playSound("wrong");
 
     $("#level-title").text("Game Over! Press Any Key To Restart...");
+
+    // !Step 10: Restarts the game upon clicking
+    $(document).keypress(function () {
+      startOver();
+    });
   }
+}
+
+// *Step 10: Restarting the game
+function startOver() {
+  // !Resets the parameters to restart the game
+  level = 0;
+  gamePattern.length = 0;
+  started = false;
 }
