@@ -14,7 +14,7 @@ var level = 0;
 function nextSequence() {
   // !Step 7 Continued: Increments the game level
   level++;
-  // Updated the level text after it increments
+  // Updates the level displayed after increment
   $("#level-title").text(`Level ${level}`);
 
   var randomNumber = Math.floor(Math.random() * 4);
@@ -22,6 +22,7 @@ function nextSequence() {
   gamePattern.push(randomChosenColor);
   console.log(gamePattern);
 
+  /*  // !Step 6 Continued: Shows button animation
   // *Step 3: Showing the sequence to user with animations and sounds
   // Press the specific button (Keydown action)
   $(`.${randomChosenColor}`).addClass("pressed");
@@ -30,6 +31,8 @@ function nextSequence() {
   setTimeout(function () {
     $(`.${randomChosenColor}`).removeClass("pressed");
   }, 100);
+  */
+  animatePress(randomChosenColor);
 
   // !Step 5 Continued: Plays sound of the corresponding button
   playSound(randomChosenColor);
@@ -54,6 +57,10 @@ $(".btn").on("click", function () {
 
   // !Step 6 Continued: Shows button press animation
   animatePress(userChosenColor);
+
+  // !Step 8 Continued: Checks answer
+  // Sends the last index of array as a parameter to checkAnswer for pattern validation
+  checkAnswer(userClickedPattern.length - 1);
 });
 
 // *Step 5: Added sounds to button clicks
@@ -73,12 +80,29 @@ function animatePress(currentColor) {
 }
 
 // *Step 7: Starting the game
-$(document).keypress(function (event) {
+$(document).keypress(function () {
   if (!started) {
-    if (event.key == "a" || event.key == "A") {
-      $("#level-title").text(`Level ${level}`);
-      nextSequence();
-      started = true;
-    }
+    $("#level-title").text(`Level ${level}`);
+    nextSequence();
+    started = true;
   }
 });
+
+// *Step 8: Checks the user's input sequence against the game's pattern sequence (Pattern Validation)
+function checkAnswer(curretLevel) {
+  if (userClickedPattern[curretLevel] == gamePattern[curretLevel]) {
+    // User clicked the right buttons as the game pattern
+    console.log("Success!");
+    // Checks if the user has the right pattern as the game pattern
+    if (userClickedPattern.toString() == gamePattern.toString()) {
+      setTimeout(function () {
+        nextSequence();
+        // Empties userClickedPattern array
+        userClickedPattern.length = 0;
+      }, 1000);
+    }
+  } else {
+    // User did not click the right patterns as the game pattern
+    console.log("Fail!");
+  }
+}
