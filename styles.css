@@ -1,13 +1,28 @@
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-20px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+}
+
 body {
   text-align: center;
-  background-color: #011f3f;
+  background-color: #aa78a6;
 }
 
 #level-title {
   font-family: "Press Start 2P", cursive;
   font-size: 3rem;
   margin: 5%;
-  color: #fef2bf;
+  color: #fff8f3;
 }
 
 .container {
@@ -23,6 +38,10 @@ body {
   width: 200px;
   border: 10px solid black;
   border-radius: 20%;
+  overflow: hidden;
+  box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+  transform: translatey(0px);
+  animation: float 6s ease-in-out infinite;
 }
 
 .game-over {
@@ -31,19 +50,23 @@ body {
 }
 
 .red {
-  background-color: red;
+  background-color: #eb5353;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5);
 }
 
 .green {
-  background-color: green;
+  background-color: #36ae7c;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5);
 }
 
 .blue {
-  background-color: blue;
+  background-color: #187498;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5);
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: #f9d923;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5);
 }
 
 .pressed {
