@@ -73,4 +73,47 @@ body {
   box-shadow: 0 0 20px white;
   background-color: grey;
 }
+
+/* Configuration for tablets */
+@media (max-width: 1100px) {
+  .title {
+    font-size: 3rem; /* Adjust this value as needed */
+    text-align: center; /* Ensure the title is centered */
+  }
+
+  .btn {
+    /* Reducing the size of buttons for smaller screen */
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 743px) {
+  .title {
+    font-size: 3rem; /* Adjust this value as needed */
+    text-align: center; /* Ensure the title is centered */
+  }
+
+  .btn {
+    /* Reducing the size of buttons for smaller screen */
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+  }
+}
+
+/* Configuration for phones */
+@media (max-width: 540px) {
+  .title {
+    font-size: 2rem; /* Adjust this value as needed */
+    text-align: center; /* Ensure the title is centered */
+  }
+
+  .btn {
+    /* Reducing the size of buttons for smaller screen */
+    width: 60px;
+    height: 60px;
+    margin: 2px;
+  }
 }
