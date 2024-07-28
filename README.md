@@ -4,14 +4,8 @@
 
 ---
 
-<!DOCTYPE html>
-<br>
-<html lang="en" dir="ltr">
-  <head>
-    <img src="demo.png" alt="demo">
-  </head>
-</br>
-</html>
+[![Watch the video](demo.png)](https://youtu.be/we2FpihCmVA)
+
 
 **Files Structure**
 
